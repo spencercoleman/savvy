@@ -8,24 +8,39 @@ interface NavbarProps {
 
 Link.defaultProps = {
     fontWeight: 500,
+    textDecoration: 'none',
+    _hover: {
+        textDecoration: 'none',
+    },
 };
 
 const Navbar = ({ username }: NavbarProps) => {
     return (
-        <Flex gap={8} alignItems="center">
+        <Flex alignItems="center" gap={8}>
             <Link as={NavLink} to="/" aria-label="Navigate home" fontSize="3xl">
                 💸
             </Link>
-            <Link as={NavLink} to="budgets" aria-label="Navigate to budgets">
-                Budgets
-            </Link>
-            <Link as={NavLink} to="expenses" aria-label="Navigate to expenses">
-                Expenses
-            </Link>
+
             {username && (
-                <Box ml="auto">
-                    <DeleteForm />
-                </Box>
+                <Flex alignItems="center" gap={8} grow={1}>
+                    <Link
+                        as={NavLink}
+                        to="budgets"
+                        aria-label="Navigate to budgets"
+                    >
+                        Budgets
+                    </Link>
+                    <Link
+                        as={NavLink}
+                        to="expenses"
+                        aria-label="Navigate to expenses"
+                    >
+                        Expenses
+                    </Link>
+                    <Box ml="auto">
+                        <DeleteForm />
+                    </Box>
+                </Flex>
             )}
         </Flex>
     );

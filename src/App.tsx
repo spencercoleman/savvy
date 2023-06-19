@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { deleteFormAction } from './components/DeleteForm';
 import MainLayout, { mainLoader } from './layouts/MainLayout';
 import Dashboard, { dashboardAction, dashboardLoader } from './pages/Dashboard';
-import { deleteFormAction } from './components/DeleteForm';
 
 const router = createBrowserRouter([
     {
@@ -33,11 +33,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-    return (
-        <div className="App">
-            <RouterProvider router={router} />
-        </div>
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;

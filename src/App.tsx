@@ -14,6 +14,14 @@ const router = createBrowserRouter([
                 loader: dashboardLoader,
                 action: dashboardAction,
             },
+            {
+                path: 'budgets',
+                element: <p>Temp Budgets</p>,
+            },
+            {
+                path: 'expenses',
+                element: <p>Temp Expenses</p>,
+            },
         ],
     },
 ]);

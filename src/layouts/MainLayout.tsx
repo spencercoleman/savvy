@@ -1,6 +1,7 @@
 import { Outlet, useLoaderData } from 'react-router-dom';
 import { Container } from '@chakra-ui/react';
 import { fetchData } from '../utils/helpers';
+import Navbar from '../components/Navbar';
 
 interface LayoutData {
     username: string;
@@ -18,7 +19,8 @@ const Dashboard = () => {
     const { username } = useLoaderData() as LayoutData;
 
     return (
-        <Container maxW="container.xl" p={2}>
+        <Container maxW="container.xl" p={4}>
+            <Navbar username={username} />
             <Outlet />
         </Container>
     );

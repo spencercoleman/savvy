@@ -1,12 +1,20 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainLayout, { mainLoader } from './layouts/MainLayout';
 import Dashboard, { dashboardAction, dashboardLoader } from './pages/Dashboard';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Dashboard />,
-        loader: dashboardLoader,
-        action: dashboardAction,
+        element: <MainLayout />,
+        loader: mainLoader,
+        children: [
+            {
+                index: true,
+                element: <Dashboard />,
+                loader: dashboardLoader,
+                action: dashboardAction,
+            },
+        ],
     },
 ]);
 

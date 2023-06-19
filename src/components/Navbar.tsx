@@ -18,16 +18,17 @@ Link.defaultProps = {
     },
 };
 
-Text.defaultProps = {
-    display: { base: 'none', md: 'inline-block' },
-};
-
 const Navbar = ({ username }: NavbarProps) => {
     return (
         <Flex justifyContent="space-between" gap={8}>
             <Link as={NavLink} to="/" aria-label="Navigate home">
                 <Icon as={BiColor} boxSize={8} color="blue.500" />
-                <Text fontSize="2xl">Savvy</Text>
+                <Text
+                    fontSize="2xl"
+                    display={{ base: 'none', md: 'inline-block' }}
+                >
+                    Savvy
+                </Text>
             </Link>
 
             {username && (
@@ -37,7 +38,9 @@ const Navbar = ({ username }: NavbarProps) => {
                     aria-label="Navigate to budgets"
                 >
                     <Icon as={BiCalculator} boxSize={6} />
-                    <Text>Budgets</Text>
+                    <Text display={{ base: 'none', md: 'inline-block' }}>
+                        Budgets
+                    </Text>
                 </Link>
             )}
             {username && (
@@ -47,7 +50,9 @@ const Navbar = ({ username }: NavbarProps) => {
                     aria-label="Navigate to expenses"
                 >
                     <Icon as={BiDollarCircle} boxSize={6} />
-                    <Text>Expenses</Text>
+                    <Text display={{ base: 'none', md: 'inline-block' }}>
+                        Expenses
+                    </Text>
                 </Link>
             )}
             {username && <DeleteForm />}

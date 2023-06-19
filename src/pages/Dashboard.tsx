@@ -1,6 +1,6 @@
 import { ActionFunctionArgs, useLoaderData } from 'react-router-dom';
 import { fetchData } from '../utils/helpers';
-import LoginForm from '../components/LoginForm';
+import Splash from '../components/Splash';
 
 interface DashboardData {
     username: string | null;
@@ -29,7 +29,7 @@ export const dashboardAction = async ({ request }: ActionFunctionArgs) => {
 const Dashboard = () => {
     const { username } = useLoaderData() as DashboardData;
 
-    return username ? <p>Welcome {username}</p> : <LoginForm />;
+    return username ? <p>Welcome {username}</p> : <Splash />;
 };
 
 export default Dashboard;

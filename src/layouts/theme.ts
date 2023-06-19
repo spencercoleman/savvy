@@ -1,7 +1,16 @@
-import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react';
+import {
+    extendTheme,
+    withDefaultColorScheme,
+    type ThemeConfig,
+} from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 
 const { Button, Card, Container, Input } = chakraTheme.components;
+
+const config: ThemeConfig = {
+    initialColorMode: 'system',
+    useSystemColorMode: true,
+};
 
 const theme = extendTheme(
     {
@@ -14,6 +23,7 @@ const theme = extendTheme(
             Container,
             Input,
         },
+        config: config,
     },
     withDefaultColorScheme({
         colorScheme: 'primary',

@@ -25,7 +25,6 @@ const router = createBrowserRouter([
             },
             {
                 path: 'delete',
-                element: <p>Account deleted</p>,
                 action: deleteFormAction,
             },
         ],

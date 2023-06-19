@@ -1,5 +1,6 @@
-import { Flex, Link } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
+import { Box, Flex, Link } from '@chakra-ui/react';
+import DeleteForm from './DeleteForm';
 
 interface NavbarProps {
     username: string;
@@ -22,9 +23,9 @@ const Navbar = ({ username }: NavbarProps) => {
                 Expenses
             </Link>
             {username && (
-                <Link as={NavLink} to="/" ml="auto">
-                    Logout
-                </Link>
+                <Box ml="auto">
+                    <DeleteForm />
+                </Box>
             )}
         </Flex>
     );

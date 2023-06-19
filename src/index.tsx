@@ -1,21 +1,22 @@
 import {
-    ChakraBaseProvider,
-    extendBaseTheme,
+    ChakraProvider,
+    extendTheme,
     withDefaultColorScheme,
 } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-const { Button, Container, Input } = chakraTheme.components;
+const { Button, Card, Container, Input } = chakraTheme.components;
 
-const theme = extendBaseTheme(
+const theme = extendTheme(
     {
         colors: {
             primary: chakraTheme.colors.blue,
         },
         components: {
             Button,
+            Card,
             Container,
             Input,
         },
@@ -30,7 +31,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <ChakraBaseProvider theme={theme}>
+    <ChakraProvider theme={theme}>
         <App />
-    </ChakraBaseProvider>
+    </ChakraProvider>
 );

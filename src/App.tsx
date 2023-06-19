@@ -22,6 +22,10 @@ const router = createBrowserRouter([
                 path: 'expenses',
                 element: <p>Temp Expenses</p>,
             },
+            {
+                path: 'delete',
+                element: <p>Account deleted</p>,
+            },
         ],
     },
 ]);

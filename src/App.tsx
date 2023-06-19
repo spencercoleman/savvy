@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout, { mainLoader } from './layouts/MainLayout';
 import Dashboard, { dashboardAction, dashboardLoader } from './pages/Dashboard';
+import { deleteFormAction } from './components/DeleteForm';
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
             {
                 path: 'delete',
                 element: <p>Account deleted</p>,
+                action: deleteFormAction,
             },
         ],
     },

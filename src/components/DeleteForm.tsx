@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
+import { deleteItem } from '../utils/helpers';
 import {
     AlertDialog,
     AlertDialogBody,
@@ -10,6 +11,11 @@ import {
     Button,
     useDisclosure,
 } from '@chakra-ui/react';
+
+export const deleteFormAction = () => {
+    deleteItem({ key: 'savvy_username' });
+    return redirect('/');
+};
 
 const DeleteForm = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();

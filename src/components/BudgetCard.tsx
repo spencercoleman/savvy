@@ -1,8 +1,7 @@
+import type { Budget } from '../utils/helpers';
 import {
     Card,
-    CardHeader,
     CardBody,
-    CardFooter,
     Progress,
     Heading,
     Flex,
@@ -10,14 +9,11 @@ import {
     Stack,
 } from '@chakra-ui/react';
 
-interface Budget {
-    amount: number;
-    createdAt: number;
-    id: string;
-    name: string;
+interface BudgetCardProps {
+    budget: Budget;
 }
 
-const BudgetCard = ({ budget }: { budget: Budget }) => {
+const BudgetCard = ({ budget }: BudgetCardProps) => {
     const { amount, name } = budget;
 
     return (

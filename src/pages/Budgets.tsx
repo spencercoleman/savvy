@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, useLoaderData } from 'react-router-dom';
-import { fetchData, addBudget } from '../utils/helpers';
+import { fetchData, addBudget, type Budget } from '../utils/helpers';
 import {
     Heading,
     SimpleGrid,
@@ -7,13 +7,6 @@ import {
     createStandaloneToast,
 } from '@chakra-ui/react';
 import BudgetCard from '../components/BudgetCard';
-
-interface Budget {
-    amount: number;
-    createdAt: number;
-    id: string;
-    name: string;
-}
 
 interface BudgetsData {
     budgets: Budget[] | null;

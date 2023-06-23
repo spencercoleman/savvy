@@ -1,21 +1,10 @@
 import { Form } from 'react-router-dom';
-import { Button, Icon, Input, Stack, useToast } from '@chakra-ui/react';
+import { Button, Icon, Input, Stack } from '@chakra-ui/react';
 import { BiUserCheck } from 'react-icons/bi';
 
 const LoginForm = () => {
-    const toast = useToast();
-
     return (
-        <Form
-            method="post"
-            onSubmit={() =>
-                toast({
-                    description: 'You created your account!',
-                    status: 'success',
-                    duration: 3000,
-                })
-            }
-        >
+        <Form method="post">
             <Stack gap={4}>
                 <Input
                     type="text"

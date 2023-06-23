@@ -25,7 +25,11 @@ export const budgetsAction = async ({ request }: ActionFunctionArgs) => {
         };
         addBudget(newBudget);
 
-        return null;
+        return createStandaloneToast().toast({
+            description: `${newBudget.name} created!`,
+            status: 'success',
+            duration: 3000,
+        });
     } catch (e) {
         throw new Error('There was a problem creating the budget.');
     }

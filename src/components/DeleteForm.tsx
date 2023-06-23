@@ -12,19 +12,25 @@ import {
     Icon,
     Text,
     useDisclosure,
-    useToast,
+    createStandaloneToast,
 } from '@chakra-ui/react';
 import { BiTrash } from 'react-icons/bi';
 
 export const deleteFormAction = () => {
     deleteItem({ key: 'savvy_username' });
+
+    createStandaloneToast().toast({
+        description: 'You deleted your account.',
+        status: 'info',
+        duration: 3000,
+    });
+
     return redirect('/');
 };
 
 const DeleteForm = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const cancelRef = useRef(null);
-    const toast = useToast();
 
     return (
         <>
@@ -59,18 +65,7 @@ const DeleteForm = () => {
                         </AlertDialogBody>
 
                         <AlertDialogFooter>
-                            <Form
-                                method="post"
-                                action="/delete"
-                                onSubmit={() =>
-                                    toast({
-                                        description:
-                                            'You deleted your account.',
-                                        status: 'info',
-                                        duration: 3000,
-                                    })
-                                }
-                            >
+                            <Form method="post" action="/delete">
                                 <Button
                                     ref={cancelRef}
                                     onClick={onClose}

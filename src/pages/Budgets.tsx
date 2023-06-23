@@ -1,9 +1,22 @@
 import { ActionFunctionArgs, useLoaderData } from 'react-router-dom';
 import { fetchData, addBudget } from '../utils/helpers';
-import { createStandaloneToast } from '@chakra-ui/react';
+import {
+    Heading,
+    SimpleGrid,
+    Stack,
+    createStandaloneToast,
+} from '@chakra-ui/react';
+import BudgetCard from '../components/BudgetCard';
+
+interface Budget {
+    amount: number;
+    createdAt: number;
+    id: string;
+    name: string;
+}
 
 interface BudgetsData {
-    budgets: any | null;
+    budgets: Budget[] | null;
 }
 
 export const budgetsLoader = (): BudgetsData => {
@@ -38,7 +51,18 @@ export const budgetsAction = async ({ request }: ActionFunctionArgs) => {
 const Budgets = () => {
     const { budgets } = useLoaderData() as BudgetsData;
 
-    return <div>Budgets page</div>;
+    return (
+        <Stack spacing={4}>
+            <Heading as="h1" size="lg">
+                Your Budgets
+            </Heading>
+            <SimpleGrid columns={[1, null, 2, 3]} gap={4}>
+                {budgets?.map((budget) => (
+                    <BudgetCard key={budget.id} budget={budget} />
+                ))}
+            </SimpleGrid>
+        </Stack>
+    );
 };
 
 export default Budgets;

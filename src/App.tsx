@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { deleteFormAction } from './components/DeleteForm';
 import MainLayout, { mainLoader } from './layouts/MainLayout';
 import Dashboard, { dashboardAction, dashboardLoader } from './pages/Dashboard';
+import Budgets, { budgetsAction, budgetsLoader } from './pages/Budgets';
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'budgets',
-                element: <p>Temp Budgets</p>,
+                element: <Budgets />,
+                loader: budgetsLoader,
+                action: budgetsAction,
             },
             {
                 path: 'expenses',

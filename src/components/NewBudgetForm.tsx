@@ -13,10 +13,10 @@ import {
 
 const NewBudgetForm = () => {
     return (
-        <Form method="post">
+        <Form method="post" action="/budgets">
             <Stack spacing={4}>
                 <Box>
-                    <FormLabel htmlFor="newBudget">Budget name</FormLabel>
+                    <FormLabel htmlFor="newBudgetName">Budget name</FormLabel>
                     <InputGroup>
                         <InputLeftElement pointerEvents="none">
                             <Icon as={BiBookAlt} color="gray.500" boxSize={5} />
@@ -24,8 +24,8 @@ const NewBudgetForm = () => {
                         <Input
                             type="text"
                             variant="filled"
-                            name="newBudget"
-                            id="newBudget"
+                            name="newBudgetName"
+                            id="newBudgetName"
                             placeholder="e.g. Travel"
                             required
                         />

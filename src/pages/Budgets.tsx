@@ -1,12 +1,13 @@
 import { ActionFunctionArgs, useLoaderData } from 'react-router-dom';
-import { fetchData } from '../utils/helpers';
+import { fetchData, addBudget } from '../utils/helpers';
+import { createStandaloneToast } from '@chakra-ui/react';
 
 interface BudgetsData {
-    budgets: string | null;
+    budgets: any | null;
 }
 
 export const budgetsLoader = (): BudgetsData => {
-    const budgets = fetchData('savvyBudgets');
+    const budgets = fetchData('savvy_budgets');
 
     return {
         budgets,
@@ -18,13 +19,15 @@ export const budgetsAction = async ({ request }: ActionFunctionArgs) => {
     const budgetData = Object.fromEntries(formData);
 
     try {
-        // Get existing budgets
-        // Create new budget using budgetData
-        // Insert new budget into budgets list and save to localStorage
-        console.log('New budget created ', budgetData);
+        const newBudget = {
+            amount: budgetData.newBudgetAmount,
+            name: budgetData.newBudgetName,
+        };
+        addBudget(newBudget);
+
         return null;
     } catch (e) {
-        throw new Error('There was a problem creating your account');
+        throw new Error('There was a problem creating the budget.');
     }
 };
 

@@ -31,6 +31,7 @@ export const formatCurrencyAmount = (amount: number) => {
     });
 };
 
+// Creates a new budget and adds to budget list
 export const addBudget = ({
     name,
     amount,
@@ -52,6 +53,7 @@ export const addBudget = ({
     );
 };
 
+// Creates a new expense and adds to expense list
 export const addExpense = ({
     name,
     amount,
@@ -73,4 +75,16 @@ export const addExpense = ({
         'savvy_expenses',
         JSON.stringify([...currentExpenses, newExpense])
     );
+};
+
+// Fetches total amount spent for an individual budget
+export const fetchSpentAmount = (budgetId: string) => {
+    const currentExpenses: Expense[] = fetchData('savvy_expenses') ?? [];
+
+    const totalBudgetSpent: number = currentExpenses.reduce((acc, expense) => {
+        if (expense.budget !== budgetId) return acc;
+        return (acc += expense.amount);
+    }, 0);
+
+    return totalBudgetSpent;
 };

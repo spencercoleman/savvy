@@ -1,4 +1,8 @@
-import { Budget, formatCurrencyAmount } from '../utils/helpers';
+import {
+    Budget,
+    fetchSpentAmount,
+    formatCurrencyAmount,
+} from '../utils/helpers';
 import {
     Card,
     CardBody,
@@ -15,6 +19,7 @@ interface BudgetCardProps {
 
 const BudgetCard = ({ budget }: BudgetCardProps) => {
     const { amount, name } = budget;
+    const spentAmount = fetchSpentAmount(budget.id);
 
     return (
         <Card variant="filled">
@@ -23,7 +28,7 @@ const BudgetCard = ({ budget }: BudgetCardProps) => {
                     <Heading size="md">{name}</Heading>
                     <Progress max={amount} />
                     <Flex justifyContent="space-between" gap={2}>
-                        <Text>{formatCurrencyAmount(0)} spent</Text>
+                        <Text>{formatCurrencyAmount(spentAmount)} spent</Text>
                         <Text>of {formatCurrencyAmount(amount)}</Text>
                     </Flex>
                 </Stack>

@@ -1,3 +1,4 @@
+// Interfaces
 export interface Budget {
     amount: number;
     createdAt: number;
@@ -13,6 +14,7 @@ export interface Expense {
     name: string;
 }
 
+// Helpers
 export const fetchData = (key: string) => {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : null;
@@ -20,6 +22,13 @@ export const fetchData = (key: string) => {
 
 export const deleteItem = ({ key }: { key: string }) => {
     localStorage.removeItem(key);
+};
+
+export const formatCurrencyAmount = (amount: number) => {
+    return amount.toLocaleString(undefined, {
+        style: 'currency',
+        currency: 'USD',
+    });
 };
 
 export const addBudget = ({

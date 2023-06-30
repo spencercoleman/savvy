@@ -1,4 +1,4 @@
-import type { Budget } from '../utils/helpers';
+import { Budget, formatCurrencyAmount } from '../utils/helpers';
 import {
     Card,
     CardBody,
@@ -23,8 +23,8 @@ const BudgetCard = ({ budget }: BudgetCardProps) => {
                     <Heading size="md">{name}</Heading>
                     <Progress max={amount} />
                     <Flex justifyContent="space-between" gap={2}>
-                        <Text>$0 spent</Text>
-                        <Text>of ${amount}</Text>
+                        <Text>{formatCurrencyAmount(0)} spent</Text>
+                        <Text>of {formatCurrencyAmount(amount)}</Text>
                     </Flex>
                 </Stack>
             </CardBody>

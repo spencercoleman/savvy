@@ -1,6 +1,22 @@
 import { ActionFunctionArgs, useLoaderData } from 'react-router-dom';
-import { fetchData, addExpense, type Expense } from '../utils/helpers';
-import { Heading, Stack, createStandaloneToast } from '@chakra-ui/react';
+import {
+    addExpense,
+    fetchData,
+    formatCurrencyAmount,
+    type Expense,
+} from '../utils/helpers';
+import {
+    Heading,
+    Stack,
+    Table,
+    Thead,
+    Tbody,
+    Tr,
+    Th,
+    Td,
+    TableContainer,
+    createStandaloneToast,
+} from '@chakra-ui/react';
 
 interface ExpensesData {
     expenses: Expense[] | null;
@@ -38,17 +54,33 @@ export const expensesAction = async ({ request }: ActionFunctionArgs) => {
 
 const Expenses = () => {
     const { expenses } = useLoaderData() as ExpensesData;
+    const expenseTableHeaders = ['Expense', 'Amount', 'Date'];
 
     return (
         <Stack spacing={4}>
             <Heading as="h1" size="lg">
                 Your Expenses
             </Heading>
-            {expenses?.map((expense) => (
-                <div key={expense.id}>
-                    {expense.name} ${expense.amount}
-                </div>
-            ))}
+            <TableContainer>
+                <Table>
+                    <Thead>
+                        <Tr>
+                            {expenseTableHeaders.map((header, index) => (
+                                <Th key={index}>{header}</Th>
+                            ))}
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        {expenses?.map((expense) => (
+                            <Tr key={expense.id}>
+                                <Td>{expense.name}</Td>
+                                <Td>{formatCurrencyAmount(expense.amount)}</Td>
+                                <Td>{expense.createdAt}</Td>
+                            </Tr>
+                        ))}
+                    </Tbody>
+                </Table>
+            </TableContainer>
         </Stack>
     );
 };

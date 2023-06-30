@@ -3,6 +3,7 @@ import { deleteFormAction } from './components/DeleteForm';
 import MainLayout, { mainLoader } from './layouts/MainLayout';
 import Dashboard, { dashboardAction, dashboardLoader } from './pages/Dashboard';
 import Budgets, { budgetsAction, budgetsLoader } from './pages/Budgets';
+import Expenses, { expensesAction, expensesLoader } from './pages/Expenses';
 
 const router = createBrowserRouter([
     {
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'expenses',
-                element: <p>Temp Expenses</p>,
+                element: <Expenses />,
+                loader: expensesLoader,
+                action: expensesAction,
             },
             {
                 path: 'delete',

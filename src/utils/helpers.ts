@@ -88,3 +88,7 @@ export const fetchSpentAmount = (budgetId: string) => {
 
     return totalBudgetSpent;
 };
+
+export const formatDateString = (epoch: number) => {
+    return new Date(epoch).toLocaleDateString();
+};

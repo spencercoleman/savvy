@@ -3,6 +3,7 @@ import {
     addExpense,
     fetchData,
     formatCurrencyAmount,
+    formatDateString,
     type Expense,
 } from '../utils/helpers';
 import {
@@ -75,7 +76,7 @@ const Expenses = () => {
                             <Tr key={expense.id}>
                                 <Td>{expense.name}</Td>
                                 <Td>{formatCurrencyAmount(expense.amount)}</Td>
-                                <Td>{expense.createdAt}</Td>
+                                <Td>{formatDateString(expense.createdAt)}</Td>
                             </Tr>
                         ))}
                     </Tbody>

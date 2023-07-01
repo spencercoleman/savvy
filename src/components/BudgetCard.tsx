@@ -26,7 +26,7 @@ const BudgetCard = ({ budget }: BudgetCardProps) => {
             <CardBody>
                 <Stack spacing={4}>
                     <Heading size="md">{name}</Heading>
-                    <Progress max={amount} />
+                    <Progress max={amount} value={spentAmount} />
                     <Flex justifyContent="space-between" gap={2}>
                         <Text>{formatCurrencyAmount(spentAmount)} spent</Text>
                         <Text>of {formatCurrencyAmount(amount)}</Text>

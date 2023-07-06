@@ -18,6 +18,8 @@ import { BiTrash } from 'react-icons/bi';
 
 export const deleteFormAction = () => {
     deleteItem({ key: 'savvy_username' });
+    deleteItem({ key: 'savvy_budgets' });
+    deleteItem({ key: 'savvy_expenses' });
 
     createStandaloneToast().toast({
         description: 'You deleted your account.',
